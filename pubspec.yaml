@@ -1,0 +1,50 @@
+name: dauillama
+description: "Flutter Ollama UI"
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  collection: ^1.18.0
+  flutter_markdown: ^0.7.1
+  freezed_annotation: ^2.4.1
+  file_selector: ^1.0.3
+  highlight: ^0.7.0
+  flutter_highlight: ^0.7.0
+  intl: ^0.19.0
+  langchain: ^0.5.0+1
+  langchain_ollama: ^0.1.0
+  logging: ^1.2.0
+  markdown: ^7.2.2
+  ollama_dart: ^0.0.3+1
+  path: ^1.9.0
+  provider: ^6.1.1
+  shared_preferences: ^2.2.3
+  sqflite: ^2.3.3+1
+  uuid: ^4.4.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  freezed: ^2.5.2
+  flutter_lints: ^3.0.2
+
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/app_icons/tete_32.png
+  fonts:
+    - family: SourceCode
+      fonts:
+        - asset: assets/fonts/SourceCodePro.ttf
+        - asset: assets/fonts/SourceCodePro-Italic.ttf
+          style: italic
+
