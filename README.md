@@ -6,6 +6,12 @@ a DArt(Flutter) UI for local [Ollama](https://ollama.com) API
 
 - uses [Ollama Dart](https://pub.dev/packages/ollama_dart)
 
+## Usage
+
+Launch Ollama desktop app or run [ollama serve](https://github.com/ollama/ollama#start-ollama).
+
+The [OllamaClient](https://pub.dev/documentation/ollama_dart/latest/ollama_dart/OllamaClient-class.html) attempts to retrieve the `OLLAMA_BASE_URL` from the environment variables, defaulting to http://127.0.0.1:11434/api if it is not set.
+
 ## Platforms
 - [x] Macos
 - [ ] Windows
