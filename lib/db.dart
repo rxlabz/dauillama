@@ -26,6 +26,8 @@ class Db {
       path = join(await getDatabasesPath(), dbPath);
     }
 
+    _log.info('DbPath : $path');
+
     return openDatabase(
       join(path),
       onCreate: _createDb,
