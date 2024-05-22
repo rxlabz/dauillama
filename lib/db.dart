@@ -6,21 +6,20 @@ import 'model.dart';
 
 const dbPath = 'db.db';
 
+final _log = Logger('Db');
+
 enum Table { conversation }
 
-class Db {
-  final _log = Logger('Db');
+/// sqlite DB abstraction
+Future<Database> initDB() async {
+  final path = join(await getDatabasesPath(), dbPath);
+  _log.info('DbPath : $path');
 
-  Future<Database> init() async {
-    final path = join(await getDatabasesPath(), dbPath);
-    _log.info('DbPath : $path');
-
-    return openDatabase(
-      join(path),
-      onCreate: _createDb,
-      version: 1,
-    );
-  }
+  return openDatabase(
+    join(path),
+    onCreate: _createDb,
+    version: 1,
+  );
 }
 
 Future<void> _createDb(Database db, int version) => db.execute('''
@@ -54,11 +53,6 @@ class ConversationService {
       whereArgs: [conversation.id],
     );
   }
-
-  /*Future<void> updateConversation(Conversation conversation) async {
-    await db.update(Table.conversation.name, conversation.toMap(),
-        where: 'id = ?');
-  }*/
 
   Future<List<Conversation>> loadConversations() async {
     final rawConversations =

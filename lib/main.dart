@@ -12,7 +12,7 @@ void main() async {
   initLog();
 
   final prefs = await SharedPreferences.getInstance();
-  final db = await Db().init();
+  final db = await initDB();
 
   runApp(
     RootProvider(
