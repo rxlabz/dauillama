@@ -28,6 +28,8 @@ dependencies:
   shared_preferences: ^2.2.3
   sqflite: ^2.3.3+1
   uuid: ^4.4.0
+  sqflite_common_ffi: ^2.3.3
+  xdg_directories: ^1.0.4
 
 dev_dependencies:
   flutter_test:

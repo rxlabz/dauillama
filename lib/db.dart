@@ -1,6 +1,11 @@
+import 'dart:io';
+
 import 'package:logging/logging.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart' as sqflite_ffi;
+import 'package:xdg_directories/xdg_directories.dart';
+import './globals.dart' as globals;
 
 import 'model.dart';
 
@@ -12,8 +17,14 @@ class Db {
   final _log = Logger('Db');
 
   Future<Database> init() async {
-    final path = join(await getDatabasesPath(), dbPath);
-    _log.info('DbPath : $path');
+    var path;
+    if (Platform.isLinux) {
+      sqflite_ffi.sqfliteFfiInit();
+      databaseFactory = sqflite_ffi.databaseFactoryFfi;
+      path = join(dataHome.path, globals.appName, dbPath);
+    } else {
+      path = join(await getDatabasesPath(), dbPath);
+    }
 
     return openDatabase(
       join(path),
