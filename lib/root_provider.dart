@@ -27,7 +27,10 @@ class RootProvider extends StatefulWidget {
 }
 
 class _RootProviderState extends State<RootProvider> {
-  final ollamaClient = OllamaClient();
+  final ollamaClient = OllamaClient(
+    baseUrl: const String.fromEnvironment('OLLAMA_BASE_URL',
+        defaultValue: 'http://127.0.0.1:11434/api'),
+  );
 
   late final ConversationService conversationService =
       ConversationService(widget.db);
