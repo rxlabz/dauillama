@@ -13,12 +13,15 @@ class RootProvider extends StatefulWidget {
 
   final Database db;
 
+  final String? ollamaBaseUrl;
+
   final Widget child;
 
   const RootProvider({
     required this.child,
     required this.prefs,
     required this.db,
+    required this.ollamaBaseUrl,
     super.key,
   });
 
@@ -27,10 +30,7 @@ class RootProvider extends StatefulWidget {
 }
 
 class _RootProviderState extends State<RootProvider> {
-  final ollamaClient = OllamaClient(
-    baseUrl: const String.fromEnvironment('OLLAMA_BASE_URL',
-        defaultValue: 'http://127.0.0.1:11434/api'),
-  );
+  late final ollamaClient = OllamaClient(baseUrl: widget.ollamaBaseUrl);
 
   late final ConversationService conversationService =
       ConversationService(widget.db);
@@ -43,8 +43,8 @@ class _RootProviderState extends State<RootProvider> {
   @override
   Widget build(final BuildContext context) => MultiProvider(
         providers: [
-          Provider.value(value: conversationService),
           Provider.value(value: ollamaClient),
+          Provider.value(value: conversationService),
           Provider.value(value: widget.prefs),
           Provider.value(value: modelController),
           ChangeNotifierProvider(

@@ -62,7 +62,6 @@ class ModelController {
   }
 
   Future<void> loadModelInfo(final Model model) async {
-    _log.info('OllamaController.loadModelInfo... ');
     try {
       modelInfo.value = const Pending();
 
@@ -77,7 +76,6 @@ class ModelController {
   }
 
   Future<void> selectModel(final Model? model) async {
-    _log.info('OllamaController.selectModel... $model');
     if (model == null) return;
 
     if (model.name != null) {
@@ -90,20 +88,6 @@ class ModelController {
   }
 
   Future<void> selectModelNamed(final String modelName) async {
-    _log.info('OllamaController.selectModel... $modelName');
-
-    final newModel = models.value.data?.firstWhereOrNull(
-      (element) => element.name?.startsWith(modelName) ?? false,
-    );
-
-    if (newModel != null) await selectModel(newModel);
-  }
-
-  Future<void> selectNewModel(final String modelName) async {
-    _log.info('OllamaController.selectModel... $modelName');
-
-    await loadModels();
-
     final newModel = models.value.data?.firstWhereOrNull(
       (element) => element.name?.startsWith(modelName) ?? false,
     );
@@ -156,19 +140,4 @@ class ModelController {
 
     await loadModels();
   }
-
-  /*Future<void> addModel(
-    String name, {
-    required VoidCallback onComplete,
-  }) async {
-    try {
-      await _downloadModel(name);
-      final newModel = models.value.data
-          ?.firstWhere((element) => element.name?.startsWith(name) == true);
-      selectModel(newModel);
-      onComplete();
-    } catch (err) {
-      _log.severe('ERROR !!! pullModel $err');
-    }
-  }*/
 }

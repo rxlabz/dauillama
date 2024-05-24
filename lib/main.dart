@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -18,6 +20,7 @@ void main() async {
     RootProvider(
       prefs: prefs,
       db: db,
+      ollamaBaseUrl: Platform.environment['OLLAMA_BASE_URL'],
       child: const App(),
     ),
   );
