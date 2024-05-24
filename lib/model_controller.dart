@@ -54,6 +54,8 @@ class ModelController {
           return;
         }
         selectModel(response.models!.first);
+      } else {
+        models.value = const Data([]);
       }
     } catch (err, stackTrace) {
       _log.severe('ERROR !!! loadModels $err\n$stackTrace');
