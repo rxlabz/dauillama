@@ -47,26 +47,6 @@ class Conversation {
         ),
       };
 
-  /*String toJson() => jsonEncode({
-        'date': lastUpdate.toIso8601String(),
-        'messages': messages.map((e) => [e.$1, e.$2]).toList(),
-      });*/
-
-  /*factory Conversation.fromJson(String json) {
-    final data = Map<String, dynamic>.from(jsonDecode(json));
-
-    return Conversation(
-      id: data['date'],
-      model: data['model'],
-      temperature: data['temperature'],
-      lastUpdate: DateTime.parse(data['date']),
-      title: data['title'],
-      messages: List<List<String>>.from(data['messages'])
-          .map((e) => (e.first, e.last))
-          .toList(),
-    );
-  }*/
-
   factory Conversation.fromMap(Map<String, dynamic> data) {
     final messages = List.from(jsonDecode(data['messages']))
         .map((e) => List<String>.from(e))

@@ -1,10 +1,11 @@
 import 'package:logging/logging.dart';
 import 'package:path/path.dart';
-import 'package:sqflite/sqflite.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import 'model.dart';
 
-const dbPath = 'db.db';
+const dbFileName = 'db.db';
 
 final _log = Logger('Db');
 
@@ -12,17 +13,16 @@ enum Table { conversation }
 
 /// sqlite DB abstraction
 Future<Database> initDB() async {
-  final path = join(await getDatabasesPath(), dbPath);
+  databaseFactory = databaseFactoryFfi;
+
+  final documentsDirectory = await getApplicationDocumentsDirectory();
+  final path = join(documentsDirectory.path, dbFileName);
   _log.info('DbPath : $path');
 
-  return openDatabase(
-    join(path),
-    onCreate: _createDb,
-    version: 1,
-  );
+  return openDatabase(path, onCreate: _createDb, version: 1);
 }
 
-Future<void> _createDb(Database db, int version) => db.execute('''
+Future<void> _createDb(Database db, [int? version]) => db.execute('''
 CREATE TABLE IF NOT EXISTS ${Table.conversation.name}(
   id TEXT NOT NULL PRIMARY KEY,
   model TEXT NOT NULL,
