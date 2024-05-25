@@ -2,7 +2,7 @@ name: dauillama
 description: "Flutter Ollama UI"
 publish_to: 'none'
 
-version: 1.0.0+1
+version: 1.2.0
 
 environment:
   sdk: '>=3.3.3 <4.0.0'
@@ -25,6 +25,7 @@ dependencies:
   provider: ^6.1.1
   shared_preferences: ^2.2.3
   sqflite_common_ffi: ^2.3.3
+  url_launcher: ^6.2.6
   uuid: ^4.4.0
 
 dev_dependencies:

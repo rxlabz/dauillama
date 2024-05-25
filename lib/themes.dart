@@ -56,6 +56,7 @@ final lightColorScheme = ColorScheme.fromSeed(
   seedColor: Colors.blueGrey,
   surface: Colors.blueGrey.shade100,
   onSurface: Colors.blueGrey.shade800,
+  secondary: Colors.deepOrange,
 );
 
 final baseLightTheme = ThemeData.from(
@@ -76,7 +77,7 @@ final lightAppTheme = baseLightTheme.copyWith(
   canvasColor: Colors.blueGrey.shade200,
   textTheme: baseLightTheme.textTheme,
   appBarTheme: lightTheme.appBarTheme.copyWith(
-    backgroundColor: Colors.grey.shade100 /*Colors.white*/,
+    backgroundColor: Colors.grey.shade100,
     elevation: 3,
     scrolledUnderElevation: 8,
     shadowColor: Colors.grey,
@@ -91,6 +92,8 @@ final darkColorScheme = ColorScheme.fromSeed(
   brightness: Brightness.dark,
   surface: blueGrey950,
   onSurface: Colors.blueGrey.shade200,
+  primary: Colors.cyan.shade700,
+  secondary: Colors.amber,
 );
 final baseDarkTheme = ThemeData.from(
   colorScheme: darkColorScheme,
@@ -118,6 +121,19 @@ final darkAppTheme = baseDarkTheme.copyWith(
     style: ButtonStyle(
       backgroundColor: WidgetStatePropertyAll(Colors.blueGrey.shade900),
       surfaceTintColor: const WidgetStatePropertyAll(Colors.transparent),
+    ),
+  ),
+  inputDecorationTheme: const InputDecorationTheme(
+    fillColor: blueGrey1100,
+    hoverColor: blueGrey850,
+    filled: true,
+    enabledBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: Colors.transparent),
+      borderRadius: BorderRadius.all(Radius.circular(12)),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: Colors.transparent),
+      borderRadius: BorderRadius.all(Radius.circular(12)),
     ),
   ),
   drawerTheme: const DrawerThemeData(backgroundColor: blueGrey950),
