@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:logging/logging.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
@@ -13,6 +15,8 @@ enum Table { conversation }
 
 /// sqlite DB abstraction
 Future<Database> initDB() async {
+  if( Platform.isWindows) sqfliteFfiInit();
+
   databaseFactory = databaseFactoryFfi;
 
   final documentsDirectory = await getApplicationDocumentsDirectory();
