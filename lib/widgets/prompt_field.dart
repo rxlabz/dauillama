@@ -25,14 +25,14 @@ class PromptFieldState extends State<PromptField> {
 
     return Container(
       padding: const EdgeInsets.all(8.0),
-      color: theme.appBarTheme.backgroundColor,
+      color: theme.cardColor,
       child: ListenableBuilder(
         listenable: Listenable.merge(
           [controller.promptFieldController, controller.selectedImage],
         ),
         builder: (context, _) {
           final selectedImage = controller.selectedImage.value;
-          final maxLines = minimized /*&& selectedImage == null*/ ? 1 : 12;
+          final maxLines = minimized ? 1 : 12;
           return Column(
             mainAxisSize: MainAxisSize.min,
             children: [

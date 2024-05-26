@@ -90,8 +90,6 @@ class _ChatHistoryViewState extends State<ChatHistoryView> {
                             child: ListTile(
                               dense: true,
                               selected: conversation == selectedConversation,
-                              selectedColor: theme.colorScheme.onSurface,
-                              selectedTileColor: theme.dialogBackgroundColor,
                               contentPadding: const EdgeInsets.only(left: 8),
                               title: Text(
                                 conversation.title,

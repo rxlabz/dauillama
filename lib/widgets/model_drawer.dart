@@ -153,13 +153,11 @@ class _ModelTileState extends State<_ModelTile> {
       onHover: (_) => setState(() => hovered = true),
       onExit: (_) => setState(() => hovered = false),
       child: ListTile(
-        selectedColor: Colors.blueGrey.shade300,
         title: Text(model.name ?? '/'),
         subtitle: Text(
           '${(model.size ?? 0).asDiskSize()} - updated ${model.formattedLastUpdate}',
         ),
         dense: true,
-        selectedTileColor: Colors.blueGrey.shade900,
         leading: const Icon(Icons.psychology),
         trailing: hovered || widget.selected
             ? Row(
@@ -199,6 +197,7 @@ class _FilterField extends StatelessWidget {
         child: TextField(
           controller: controller,
           decoration: InputDecoration(
+            label: const Text('Search model'),
             prefixIcon: const Icon(Icons.search),
             suffixIcon: IconButton(
               onPressed: () {

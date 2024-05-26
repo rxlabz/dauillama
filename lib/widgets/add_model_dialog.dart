@@ -191,6 +191,7 @@ class _NameField extends StatelessWidget {
     return TextField(
       controller: fieldController,
       decoration: InputDecoration(
+        label: const Text('Model name'),
         isDense: true,
         suffixIcon: name.isNotEmpty
             ? IconButton(

@@ -14,7 +14,7 @@ The [OllamaClient](https://pub.dev/documentation/ollama_dart/latest/ollama_dart/
 
 ## Platforms
 - [x] Macos
-- [ ] Windows
+- [x] Windows
 - [x] Linux
 - [ ] Web
 

@@ -50,7 +50,7 @@ class ErrorScreen extends StatelessWidget {
             if (secondaryActionButton != null) ...[
               const Divider(height: 18),
               secondaryActionButton!,
-            ]
+            ],
           ],
         ),
       ),
