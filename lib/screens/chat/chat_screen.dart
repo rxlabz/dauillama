@@ -133,7 +133,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ? Row(
                     children: [
                       Text(
-                        currentModel.name ?? '/',
+                        currentModel.model ?? '/',
                         style: const TextStyle(color: Colors.blueGrey),
                       ),
                       IconButton(

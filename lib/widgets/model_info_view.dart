@@ -52,7 +52,7 @@ class ModelInfoView extends StatelessWidget {
                         children: [
                           Flexible(
                             child: Text(
-                              model.name ?? '/',
+                              model.model ?? '/',
                               style: textTheme.titleMedium,
                             ),
                           ),

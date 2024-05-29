@@ -46,7 +46,7 @@ class ModelController {
           if (lastModel != null) {
             selectModel(
               response.models!.firstWhere(
-                (element) => element.name == lastModel,
+                (element) => element.model == lastModel,
                 orElse: () => response.models!.first,
               ),
             );
@@ -68,7 +68,7 @@ class ModelController {
       modelInfo.value = const Pending();
 
       final info = await _client.showModelInfo(
-        request: ModelInfoRequest(name: model.name!),
+        request: ModelInfoRequest(model: model.model!),
       );
       modelInfo.value = Data(info);
     } catch (err) {
@@ -80,9 +80,9 @@ class ModelController {
   Future<void> selectModel(final Model? model) async {
     if (model == null) return;
 
-    if (model.name != null) {
+    if (model.model != null) {
       (await SharedPreferences.getInstance())
-          .setString('currentModel', model.name!);
+          .setString('currentModel', model.model!);
     }
 
     currentModel.value = model;
@@ -91,16 +91,16 @@ class ModelController {
 
   Future<void> selectModelNamed(final String modelName) async {
     final newModel = models.value.data?.firstWhereOrNull(
-      (element) => element.name?.startsWith(modelName) ?? false,
+      (element) => element.model?.startsWith(modelName) ?? false,
     );
 
     if (newModel != null) await selectModel(newModel);
   }
 
   Future<void> deleteModel(Model model) async {
-    final name = model.name;
+    final name = model.model;
     if (name != null) {
-      final request = DeleteModelRequest(name: name);
+      final request = DeleteModelRequest(model: name);
       await _client.deleteModel(request: request);
 
       await loadModels();
@@ -110,9 +110,9 @@ class ModelController {
   ValueNotifier<double?> pullProgress = ValueNotifier(null);
 
   Future<void> updateModel(Model model) async {
-    if (model.name == null) return;
+    if (model.model == null) return;
 
-    await _downloadModel(model.name!);
+    await _downloadModel(model.model!);
     loadModelInfo(model);
   }
 
@@ -122,7 +122,7 @@ class ModelController {
     try {
       final streamResponse = _client.pullModelStream(
         request: PullModelRequest(
-          name: name,
+          model: name,
           stream: true,
         ),
       );

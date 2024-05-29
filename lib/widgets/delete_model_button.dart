@@ -20,7 +20,7 @@ class DeleteModelButton extends StatelessWidget {
         final confirm = await showAdaptiveDialog<bool>(
           context: context,
           builder: (context) => CupertinoAlertDialog(
-            title: Text('Delete ${model.name} ? '),
+            title: Text('Delete ${model.model} ? '),
             actions: [
               CupertinoDialogAction(
                 isDestructiveAction: true,

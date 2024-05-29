@@ -2,7 +2,7 @@ name: dauillama
 description: "Flutter Ollama UI"
 publish_to: 'none'
 
-version: 1.2.0
+version: 1.2.0+1
 
 environment:
   sdk: '>=3.3.3 <4.0.0'
@@ -19,7 +19,7 @@ dependencies:
   intl: ^0.19.0
   logging: ^1.2.0
   markdown: ^7.2.2
-  ollama_dart: ^0.0.3+1
+  ollama_dart: ^0.1.0+1
   path: ^1.9.0
   path_provider: ^2.1.3
   provider: ^6.1.1
@@ -32,7 +32,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^3.0.2
+  flutter_lints: ^4.0.0
 
 
 flutter:

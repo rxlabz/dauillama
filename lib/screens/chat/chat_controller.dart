@@ -50,7 +50,7 @@ class ChatController {
         _conversationService = conversationService,
         conversation = ValueNotifier(
           initialConversation ??
-              emptyConversationWith(model.value?.name ?? '/'),
+              emptyConversationWith(model.value?.model ?? '/'),
         );
 
   Future<void> loadHistory() async {
@@ -105,7 +105,7 @@ class ChatController {
     if (model.value == null) return;
     scrollController = ScrollController();
 
-    final name = model.value!.name;
+    final name = model.value!.model;
     loading.value = true;
 
     if (name != null) {
@@ -192,14 +192,14 @@ class ChatController {
   void newConversation() {
     conversation.value = Conversation(
       lastUpdate: DateTime.now(),
-      model: model.value?.name ?? '/',
+      model: model.value?.model ?? '/',
       title: 'New Chat',
       messages: [],
     );
   }
 
   Future<void> deleteConversation(Conversation deletecConversation) async {
-    conversation.value = emptyConversationWith(model.value?.name ?? '/');
+    conversation.value = emptyConversationWith(model.value?.model ?? '/');
     await _conversationService.deleteConversation(deletecConversation);
     loadHistory();
   }

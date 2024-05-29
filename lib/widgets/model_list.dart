@@ -29,7 +29,7 @@ class ModelMenu extends StatelessWidget {
                   value: model,
                   leadingIcon: const Icon(Icons.psychology),
                   label:
-                      '${model.name ?? ' ? '}(${(model.size ?? 0).asDiskSize()})',
+                      '${model.model ?? ' ? '}(${(model.size ?? 0).asDiskSize()})',
                 ),
               )
               .toList(),
@@ -77,7 +77,7 @@ class ModelTile extends StatelessWidget {
   @override
   Widget build(final BuildContext context) => ListTile(
         selected: selected,
-        title: Text(model.name ?? 'Undefined name'),
+        title: Text(model.model ?? 'Undefined name'),
         subtitle: Text(
           '${(model.size ?? 0).asDiskSize()} - '
           '${model.date == null ? '/' : DateFormat('dd/MM/yyyy').format(model.date!)}',
